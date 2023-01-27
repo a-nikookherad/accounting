@@ -15,14 +15,18 @@ return new class extends Migration {
         Schema::create('accounts', function (Blueprint $table) {
             $table->id();
             $table->morphs("accountable");
-            $table->unsignedInteger("wallet_id");
-            $table->boolean("is_treasury")
-                ->default(false);
+
+            $table->bigInteger("amount")
+                ->default(0);
+
+            $table->unsignedInteger("financial_period_id")
+                ->nullable();
+
             $table->timestamps();
 
-            $table->foreign("wallet_id")
+            $table->foreign("financial_period_id")
                 ->references("id")
-                ->on("wallet");
+                ->on("financial_periods");
         });
     }
 

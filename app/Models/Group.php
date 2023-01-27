@@ -12,7 +12,6 @@ class Group extends Model
     protected $fillable = [
         "title",
         "title_farsi",
-        "is_default",
         "is_admin",
     ];
 

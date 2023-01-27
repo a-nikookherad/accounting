@@ -11,8 +11,11 @@ class Category extends Model
 
     protected $fillable = [
         "title",
+        "title_farsi",
         "parent_id",
-        "budget_id",
+        "user_id",
+        "is_endpoint",
+        "is_entrypoint",
     ];
 
     public function parent()
@@ -33,5 +36,10 @@ class Category extends Model
     public function budgets()
     {
         return $this->belongsToMany(Budget::class, "rel_budgets_categories", "category_id", "budget_id");
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, "user_id");
     }
 }

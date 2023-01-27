@@ -13,7 +13,9 @@ return new class extends Migration {
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id();
+            $table->id()
+                ->index("index_for_id_in_users");
+
             $table->string('first_name', 50)
                 ->nullable();
 
@@ -28,6 +30,9 @@ return new class extends Migration {
 
             $table->timestamp('email_verified_at')
                 ->nullable();
+
+            $table->boolean("is_admin")
+                ->default(false);
 
             $table->string('password', 100);
 

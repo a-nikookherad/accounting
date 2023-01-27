@@ -5,18 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Wallet extends Model
+class Dependent extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         "title",
         "title_farsi",
-        "score",
+        "description",
+        "type",
     ];
 
-    public function accouts()
+    public function orders()
     {
-        return $this->hasMany(Account::class, "wallet_id");
+        return $this->belongsToMany(Order::class, "rel_orders_dependents", "dependent_id", "order_id");
     }
 }

@@ -16,9 +16,11 @@ class DefaultGroupSeeder extends Seeder
     public function run()
     {
         $data = [
-            "title" => "anyone",
-            "title_farsi" => "هر کسی",
-            "is_default" => true,
+            [
+                "title" => "administrator",
+                "title_farsi" => "مدیر",
+                "is_admin" => true,
+            ],
         ];
 
         foreach ($data as $datum) {

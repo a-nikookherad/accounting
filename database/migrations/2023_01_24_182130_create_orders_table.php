@@ -14,12 +14,27 @@ return new class extends Migration {
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
+
             $table->unsignedBigInteger("amount");
-            $table->enum("status",[
+
+            $table->string("description")
+                ->nullable();
+
+            $table->enum("status", [
                 "paid"
             ]);
+
             $table->morphs("orderable");
+
+            $table->unsignedBigInteger("user_id")
+                ->index("index_for_user_id_in_orders")
+                ->comment("the owner of this order");
+            $table->foreign("user_id")
+                ->references("id")
+                ->on("users");
+
             $table->timestamps();
+
         });
     }
 

@@ -12,15 +12,19 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::create('phones', function (Blueprint $table) {
+        Schema::create('dependents', function (Blueprint $table) {
             $table->id();
-            $table->string("phone");
-            $table->string("user_id");
+            $table->string("title");
+            $table->string("title_farsi")
+                ->nullable();
+            $table->string("description")
+                ->nullable();
+            $table->enum("type", [
+                "person",
+                "event",
+                "project",
+            ]);
             $table->timestamps();
-
-            $table->foreign("user_id")
-                ->references("id")
-                ->on("users");
         });
     }
 
@@ -31,6 +35,6 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::dropIfExists('phones');
+        Schema::dropIfExists('dependents');
     }
 };

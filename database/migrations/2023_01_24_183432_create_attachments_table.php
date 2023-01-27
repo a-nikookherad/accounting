@@ -14,10 +14,15 @@ return new class extends Migration {
     {
         Schema::create('attachments', function (Blueprint $table) {
             $table->id();
+
             $table->string("src");
+
             $table->string("file_name");
+
             $table->string("extension");
+
             $table->morphs("attachable");
+
             $table->timestamps();
         });
     }

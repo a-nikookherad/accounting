@@ -2,6 +2,16 @@
 
 namespace App\Providers;
 
+use App\Models\Account;
+use App\Models\FinancialPeriod;
+use App\Models\Product;
+use App\Models\User;
+use App\Models\Wallet;
+use App\Observers\AccountObserver;
+use App\Observers\FinancialPeriodObserver;
+use App\Observers\ProductObserver;
+use App\Observers\UserObserver;
+use App\Observers\WalletObserver;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -27,7 +37,8 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        //submit observer
+        $this->submitObserver();
     }
 
     /**
@@ -38,5 +49,17 @@ class EventServiceProvider extends ServiceProvider
     public function shouldDiscoverEvents()
     {
         return false;
+    }
+
+    private function submitObserver()
+    {
+        //submit User observer
+        User::observe(UserObserver::class);
+
+        //submit User observer
+        Product::observe(ProductObserver::class);
+
+        //submit FinancialPeriod observer
+        FinancialPeriod::observe(FinancialPeriodObserver::class);
     }
 }

@@ -12,8 +12,8 @@ class Transaction extends Model
     protected $fillable = [
         "paid_at",
         "from_account_id",
+        "treasury_account_id",
         "to_account_id",
-        "treasury_id",
         "amount",
         "order_id",
     ];

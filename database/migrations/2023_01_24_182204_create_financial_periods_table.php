@@ -14,12 +14,17 @@ return new class extends Migration {
     {
         Schema::create('financial_periods', function (Blueprint $table) {
             $table->id();
+
             $table->boolean("is_active");
+
             $table->date("started_at");
+
             $table->date("ended_at");
+
             $table->enum("status", [
                 "archived"
             ]);
+
             $table->timestamps();
         });
     }

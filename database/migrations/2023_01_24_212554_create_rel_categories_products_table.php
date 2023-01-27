@@ -14,15 +14,21 @@ return new class extends Migration {
     {
         Schema::create('rel_categories_products', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger("category_id");
-            $table->unsignedInteger("product_id");
+
+            $table->unsignedInteger("category_id")
+                ->index("index_for_category_id_in_rel_categories_products");
+
+            $table->unsignedInteger("product_id")
+                ->index("index_for_product_id_in_rel_categories_products");
+
+            $table->timestamps();
+
             $table->foreign("category_id")
                 ->references("id")
                 ->on("categories");
             $table->foreign("product_id")
                 ->references("id")
                 ->on("products");
-            $table->timestamps();
         });
     }
 

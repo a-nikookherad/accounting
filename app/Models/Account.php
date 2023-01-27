@@ -12,19 +12,9 @@ class Account extends Model
     protected $fillable = [
         "accountable_type",
         "accountable_id",
-        "wallet_id",
-        "is_treasury",
+        "amount",
+        "financial_period_id",
     ];
-
-    public function wallet()
-    {
-        return $this->belongsTo(Wallet::class, "wallet_id");
-    }
-
-    public function credits()
-    {
-        return $this->hasMany(Credit::class, "account_id");
-    }
 
     public function accountable()
     {

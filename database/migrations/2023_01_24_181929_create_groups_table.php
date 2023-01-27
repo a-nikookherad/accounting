@@ -15,12 +15,13 @@ return new class extends Migration {
         Schema::create('groups', function (Blueprint $table) {
             $table->id();
             $table->string("title");
+
             $table->string("title_farsi")
                 ->nullable();
-            $table->boolean("is_default")
-                ->default(false);
+
             $table->boolean("is_admin")
                 ->default(false);
+
             $table->timestamps();
         });
     }

@@ -12,21 +12,24 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::create('credits', function (Blueprint $table) {
+        Schema::create('rel_budgets_products', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger("amount")
-                ->default(0);
-            $table->unsignedInteger("account_id");
-            $table->unsignedInteger("financial_period_id");
+
+            $table->unsignedInteger("budget_id")
+                ->index("index_for_budget_id_in_rel_budgets_products");
+
+            $table->unsignedInteger("product_id")
+                ->index("index_for_product_id_in_rel_budgets_products");
 
             $table->timestamps();
 
-            $table->foreign("financial_period_id")
+            $table->foreign("budget_id")
                 ->references("id")
-                ->on("financial_periods");
-            $table->foreign("account_id")
+                ->on("budgets");
+
+            $table->foreign("product_id")
                 ->references("id")
-                ->on("accounts");
+                ->on("products");
         });
     }
 
@@ -37,6 +40,6 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::dropIfExists('credits');
+        Schema::dropIfExists('rel_budgets_products');
     }
 };

@@ -12,6 +12,9 @@ class Product extends Model
     protected $fillable = [
         "name",
         "name_farsi",
+        "is_endpoint",
+        "is_entrypoint",
+        "user_id",
     ];
 
     public function accounts()
@@ -27,5 +30,10 @@ class Product extends Model
     public function orders()
     {
         return $this->belongsToMany(Order::class, "rel_orders_products", "product_id", "order_id");
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, "user_id");
     }
 }

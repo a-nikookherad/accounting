@@ -14,11 +14,27 @@ return new class extends Migration {
     {
         Schema::create('banks', function (Blueprint $table) {
             $table->id();
+
             $table->string("name");
+
+            $table->string("cvv2")
+                ->nullable();
+
+            $table->date("card_date")
+                ->nullable();
+
+            $table->string("branch")
+                ->nullable();
+
             $table->string("card_number")
                 ->nullable();
+
             $table->string("account_number")
                 ->nullable();
+
+            $table->string("sheba")
+                ->nullable();
+
             $table->timestamps();
         });
     }

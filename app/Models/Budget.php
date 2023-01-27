@@ -12,10 +12,18 @@ class Budget extends Model
     protected $fillable = [
         "min",
         "max",
+        "from_date",
+        "to_date",
+        "category_id",
     ];
 
-    public function categories()
+    public function products()
     {
-        return $this->belongsToMany(Category::class, "rel_budgets_categories", "budget_id", "category_id");
+        return $this->belongsToMany(Product::class, "rel_budgets_products", "budget_id", "product_id");
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class, "category_id");
     }
 }

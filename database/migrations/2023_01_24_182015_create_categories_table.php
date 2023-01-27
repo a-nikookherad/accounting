@@ -15,18 +15,32 @@ return new class extends Migration {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
             $table->string("title");
+
+            $table->string("title_farsi")
+                ->nullable();
+
             $table->unsignedInteger("parent_id")
+                ->index("index_for_parent_id")
                 ->nullable();
-            $table->unsignedInteger("budget_id")
+
+            $table->boolean("is_endpoint")
                 ->nullable();
+
+            $table->boolean("is_entrypoint")
+                ->nullable();
+
+            $table->unsignedBigInteger("user_id")
+                ->index("index_for_user_id_in_categories")
+                ->comment("the owner of this order");
+
             $table->timestamps();
 
             $table->foreign("parent_id")
                 ->references("id")
                 ->on("categories");
-            $table->foreign("budget_id")
+            $table->foreign("user_id")
                 ->references("id")
-                ->on("budgets");
+                ->on("users");
         });
     }
 

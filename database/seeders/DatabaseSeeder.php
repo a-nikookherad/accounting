@@ -22,7 +22,9 @@ class DatabaseSeeder extends Seeder
         // ]);
         $this->call([
             DefaultGroupSeeder::class,
-            DefaulWalletSeeder::class,
+            DefaultUsersSeeder::class,
+            DefaultCategoriesSeeder::class,
+            DefaultProductsSeeder::class,
         ]);
     }
 }

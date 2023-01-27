@@ -14,8 +14,13 @@ return new class extends Migration {
     {
         Schema::create('rel_groups_users', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger("user_id");
-            $table->unsignedInteger("group_id");
+
+            $table->unsignedInteger("user_id")
+                ->index("index_for_user_id_in_rel_groups_users");
+
+            $table->unsignedInteger("group_id")
+                ->index("index_for_group_id_in_rel_groups_users");
+
             $table->timestamps();
 
             $table->foreign("user_id")

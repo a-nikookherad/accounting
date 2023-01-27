@@ -14,8 +14,13 @@ return new class extends Migration {
     {
         Schema::create('rel_orders_products', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger("order_id");
-            $table->unsignedInteger("product_id");
+
+            $table->unsignedInteger("order_id")
+                ->index("index_for_order_id_in_rel_orders_products");
+
+            $table->unsignedInteger("product_id")
+                ->index("index_for_product_id_in_rel_orders_products");
+
             $table->timestamps();
 
             $table->foreign("order_id")

@@ -16,8 +16,8 @@ class FinancialPeriod extends Model
         "status",
     ];
 
-    public function credits()
+    public function accounts()
     {
-        return $this->hasMany(Credit::class, "financial_period_id");
+        return $this->hasMany(Account::class, "financial_period_id");
     }
 }
