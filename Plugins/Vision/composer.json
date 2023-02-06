@@ -1,0 +1,20 @@
+{
+    "name": "nikookherad/vision",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Vision\\": "./src"
+        }
+    },
+    "require": {
+        "php": ">=8.1",
+        "laravel/framework": "^9.19"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Vision\\Providers\\VisionProvider"
+            ]
+        }
+    }
+}
