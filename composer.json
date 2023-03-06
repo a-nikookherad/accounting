@@ -14,7 +14,7 @@
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
-        "nikookherad/vision": "dev-master"
+        "nikookherad/vision": "^1.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

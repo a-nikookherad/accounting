@@ -21,14 +21,19 @@ return [
 
     'allowed_origins' => ['*'],
 
-    'allowed_origins_patterns' => [],
+    'allowed_origins_patterns' => ['*'],
 
     'allowed_headers' => ['*'],
+
+    'Access_Control_Allow_Methods' => ['*'],
+    'Access-Control-Allow-Methods' => ['*'],
+    'Access_Control_Allow_Origin' => ['http://127.0.0.1:3000'],
+    'Access-Control-Allow-Origin' => ['http://127.0.0.1:3000'],
 
     'exposed_headers' => [],
 
     'max_age' => 0,
 
-    'supports_credentials' => false,
-
+    'supports_credentials' => true,
+    'hosts' => ['*'],
 ];

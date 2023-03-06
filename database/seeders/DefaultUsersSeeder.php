@@ -16,7 +16,7 @@ class DefaultUsersSeeder extends Seeder
      */
     public function run()
     {
-        $data = [
+        $users = [
             [
                 "first_name" => "admin",
                 "last_name" => "admin",
@@ -34,10 +34,10 @@ class DefaultUsersSeeder extends Seeder
             ->pluck("id")
             ->toArray();
 
-        foreach ($data as $datum) {
+        foreach ($users as $user) {
             //create default admin user
             $userInstance = User::query()
-                ->updateOrCreate(["email" => $datum["email"]], $datum);
+                ->updateOrCreate(["email" => $user["email"]], $user);
             $userInstance->groups()->attach($groups);
         }
     }
